@@ -1,0 +1,6 @@
+<h1>page de creation d'un nouveau commentaire</h1>
+
+<%= simple_form_for [@task, @comment] do |f| %>
+    <%= f.input :content, label: "écrire ici le commentaire"%>
+    <%= f.button :submit, class: "button-user" %>
+<%end%>

@@ -1,0 +1,6 @@
+
+<% @comments.each do |comment|%>
+    <%= comment.content%>
+    <%= button_to "Supprimer le commentaire", {:controller => :comments,
+      :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn", style:"margin-top:15px;" %>
+<% end %>
