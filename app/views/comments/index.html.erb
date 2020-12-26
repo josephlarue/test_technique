@@ -1,6 +1,24 @@
 
+
+<div style="margin:15px;">
+<div style="border:solid; margin:25px; padding:35px;">
+      <p><%= @task.title %></p>
+      <p><%= @task.deadline %></p>
+      <p><%= @task.priority_order %></p>
+<h4>commentaires: </h4>
 <% @comments.each do |comment|%>
+
+<%if @task.id == comment.task.id%>
+   
+    <div style="border-top:solid 0.2px; margin-top: 15px;">
     <%= comment.content%>
     <%= button_to "Supprimer le commentaire", {:controller => :comments,
-      :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn", style:"margin-top:15px;" %>
+      :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn-ghost", style:"margin-top:15px;" %>
+    </div>
+    
+<%else%>
+<%end%>
 <% end %>
+</div>
+<a class="btn btn-flat" href="./comments/new" style="display: flex;justify-content: center; align-items: center;">☺♪☺ Nouveau commentaire ☺♪☺ </a>
+</div>
