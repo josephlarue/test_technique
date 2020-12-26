@@ -1,0 +1,10 @@
+
+<a class="btn btn-flat" href="/tasks/new">☺♪☺ Nouvelle tache ☺♪☺ </a>
+<div>
+    <% @tasks.each do |task|%>
+        <% x = "/tasks/#{task.id}" %>
+        <%= task.title%> || <%= task.deadline%> || <%= task.priority_order%> || <%= link_to '☺♪☺ voir cette tache ☺♪☺', task_path(task) %>
+    <%end%>
+</div>
+
+
