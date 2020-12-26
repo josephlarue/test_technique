@@ -7,14 +7,14 @@ class TasksController < ApplicationController
     def new
         @user = current_user
         @task = Task.new
-        #authorize @task
+        authorize @task
     end
     
     def create
         @user = current_user
         @task = Task.new (task_params)
         @task.user = @user
-        #authorize @task
+        authorize @task
     if @task.save
         redirect_to @task
     else
@@ -24,26 +24,26 @@ class TasksController < ApplicationController
 
     def show
         @task = Task.find(params[:id])
-        #authorize @task
+        authorize @task
     end
 
     def destroy
         @task = Task.find(params[:id])
         @task.destroy
-        #authorize @task
+        authorize @task
         redirect_to tasks_path
     end
 
 
     def edit
         @task = Task.find(params[:id])
-        #authorize @task
+        authorize @task
     end
 
     def update
         @task = Task.find(params[:id])
         @task.update(task_params)
-        #authorize @task
+        authorize @task
         redirect_to task_path(@task)
     end
 
