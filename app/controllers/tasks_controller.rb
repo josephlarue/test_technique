@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
     def index
         @tasks = Task.all
+        authorize @tasks
     end
 
     
@@ -16,7 +17,7 @@ class TasksController < ApplicationController
         @task.user = @user
         authorize @task
     if @task.save
-        redirect_to @task
+        redirect_to task_comments_path(@task.id)
     else
         render :index
     end

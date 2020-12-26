@@ -1,4 +1,4 @@
-class TaskPolicy < ApplicationPolicy
+class CommentPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -21,11 +21,10 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user_id  == user.id
+    record.task.user_id  == user.id
   end
 
   def destroy?
-    record.user_id  == user.id
+    record.task.user_id  == user.id
   end
 end
-

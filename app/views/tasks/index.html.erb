@@ -2,13 +2,16 @@
 
 <div style="">
     <% @tasks.each do |task|%>
-        <div style="margin:25px; border:solid 0.2px; padding:15px;">
-        <p><%= task.title%></p> 
-        <p><%= task.deadline%></p>
-        <p><%= task.priority_order%></p>
-        <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
-        </p>
-        </div>
+        <% if task.user.id == current_user.id%>
+            <div style="margin:25px; border:solid 0.2px; padding:15px;">
+            <p><%= task.title%></p> 
+            <p><%= task.deadline%></p>
+            <p><%= task.priority_order%></p>
+            <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
+            </p>
+            </div>
+        <%else%>
+        <%end%>
     <%end%>
 
     <a class="btn btn-flat" href="/tasks/new" style="display: flex;justify-content: center; align-items: center; margin:50px;">☺♪☺ Nouvelle tache ☺♪☺ </a>
