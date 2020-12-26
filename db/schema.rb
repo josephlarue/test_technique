@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 2020_12_26_133324) do
 
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.string "title"
     t.boolean "status"
-    t.integer "priority_order"
-    t.time "deadline"
+    t.string "priority_order"
+    t.date "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
