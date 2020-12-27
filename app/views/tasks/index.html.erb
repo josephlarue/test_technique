@@ -12,10 +12,11 @@
             </div>
               <div class="card_title">
               <p><%= task.title%></p>
-              <%if (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 0 %>
-                <p> Too late, the deadline was <%= (Date.today.to_time.to_i/86400)-(task.deadline.to_time.to_i/86400)%>d ago</p>
+              <% if task.status == true %>
+              <%elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 0 %>
+                <p style="color:red; font-weight:bold;"> Too late, the deadline was <%= (Date.today.to_time.to_i/86400)-(task.deadline.to_time.to_i/86400)%>d ago</p>
               <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) == 0 %>
-                <p> Vite la deadline est aujourd'hui !!!</p>
+                <p style="color:red; font-weight:bold;"> Vite la deadline est aujourd'hui !!!</p>
               <%elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 3%>
                 <p style="color:red; font-weight:bold;"><%= task.deadline%></p>
               <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 7 %>
@@ -25,9 +26,27 @@
               <% else %>
                 <p style="color:green; font-weight:bold;"><%= task.deadline%></p>
               <% end %>
-              <p><%= task.priority_order%></p>
-              <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
-              </p>
+              <% if task.priority_order == "TOP PRIO" %>
+                <p style="color:red;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "HIGH PRIO" %>
+                <p style="color:#FF6347;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "MEDIUM PRIO" %>
+                <p style="color:orange;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "TO DO" %>
+                <p style="color:yellow;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "NOT SO IMPORTANT" %>
+                <p style="color:#8CE88C;"><%= task.priority_order%></p>
+              <% else %>
+                <p style="color:#F7329C;"><%= task.priority_order%></p>
+              <% end %>
+              <% if task.status == false%>
+                <p>Status: à faire</p>
+              <%else%>
+                <p>Status: Done</p>
+              <% end %>
+              <p><%= link_to 'Modifier la tâche', edit_task_path(task), class:"btn-ghost", style:"text-decoration:none;" %></p>
+              <p><%= link_to 'Commentaires', task_comments_path(task), class:"btn-ghost", style:"text-decoration:none;" %></p>
+              <p><%= link_to "Archiver la tâche", {:controller => :tasks, :action => 'destroy', :id => task.id }, :method => :delete, class:"btn-ghost", style:"margin-top:15px;" %></p>
             </div>
           </div>
         <%elsif type_of_card == 2%>
@@ -38,7 +57,7 @@
             <div class="card_title">
               <p><%= task.title%></p>
               <%if (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 0 %>
-                <p> Too late, the deadline was the <%= task.deadline%></p></p>
+                <p> Too late, the deadline was <%= (Date.today.to_time.to_i/86400)-(task.deadline.to_time.to_i/86400)%>d ago</p></p>
               <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) == 0 %>
                 <p> Vite la deadline est aujourd'hui !!!</p>
               <%elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 3%>
@@ -50,9 +69,27 @@
               <% else %>
                 <p style="color:green; font-weight:bold;"><%= task.deadline%></p>
               <% end %>
-              <p><%= task.priority_order%></p>
-              <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
-              </p>
+              <% if task.priority_order == "TOP PRIO" %>
+                <p style="color:red;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "HIGH PRIO" %>
+                <p style="color:#FF6347;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "MEDIUM PRIO" %>
+                <p style="color:orange;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "TO DO" %>
+                <p style="color:yellow;"><%= task.priority_order%></p>
+              <% elsif task.priority_order == "NOT SO IMPORTANT" %>
+                <p style="color:#8CE88C;"><%= task.priority_order%></p>
+              <% else %>
+                <p style="color:#F7329C;"><%= task.priority_order%></p>
+              <% end %>
+              <% if task.status == false%>
+                <p>Status: à faire</p>
+              <%else%>
+                <p>Status: Done</p>
+              <% end %>
+              <p><%= link_to 'Modifier la tâche', edit_task_path(task), class:"btn-ghost", style:"text-decoration:none;" %></p>
+              <p><%= link_to 'Commentaires', task_comments_path(task), class:"btn-ghost", style:"text-decoration:none;" %></p>
+              <p><%= link_to "Archiver la tâche", {:controller => :tasks, :action => 'destroy', :id => task.id }, :method => :delete, class:"btn-ghost", style:"margin-top:15px;" %></p>
             </div>
           </div>
         <% else%>
