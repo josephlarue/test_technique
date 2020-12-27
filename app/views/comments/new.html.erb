@@ -1,6 +1,14 @@
-<h1>page de creation d'un nouveau commentaire</h1>
+<div style="padding-top:80px;">
+<div class="col-8 mx-auto", style="padding: 50px; margin: 50px; border-radius:8%;">
+<div style="text-align:center;">
+<h4>page de creation d'un nouveau commentaire</h4>
 
 <%= simple_form_for [@task, @comment] do |f| %>
     <%= f.input :content, label: "écrire ici le commentaire"%>
     <%= f.button :submit, class: "button-user" %>
 <%end%>
+
+    </div>
+</div>
+
+</div>
