@@ -1,19 +1,64 @@
 
+<a class="btn btn-flat" href="/tasks/new" style="display: flex;justify-content: center; align-items: center; margin:50px;">☺♪☺ Nouvelle tache ☺♪☺ </a>
 
-<div style="">
-  <a class="btn btn-flat" href="/tasks/new" style="display: flex;justify-content: center; align-items: center; margin:50px;">☺♪☺ Nouvelle tache ☺♪☺ </a>
-    <% @tasks.each do |task|%>
-        <% if task.user.id == current_user.id%>
-            <div style="margin:25px; border:solid 0.2px; padding:15px;">
-            <p><%= task.title%></p> 
-            <p><%= task.deadline%></p>
-            <p><%= task.priority_order%></p>
-            <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
-            </p>
+<div class="cards">
+  <%@tasks.each do |task|%>
+    <% if task.user.id == current_user.id%>
+        <%type_of_card = rand(1..2)%>
+        <%if type_of_card == 1%>
+          <div class="card 1">
+            <div class="card_image">
+              <img src="https://images.unsplash.com/photo-1516557070061-c3d1653fa646?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
             </div>
+              <div class="card_title">
+              <p><%= task.title%></p>
+              <%if (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 0 %>
+                <p> Too late, the deadline was <%= (Date.today.to_time.to_i/86400)-(task.deadline.to_time.to_i/86400)%>d ago</p>
+              <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) == 0 %>
+                <p> Vite la deadline est aujourd'hui !!!</p>
+              <%elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 3%>
+                <p style="color:red; font-weight:bold;"><%= task.deadline%></p>
+              <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 7 %>
+                <p style="color:orange; font-weight:bold;"><%= task.deadline%></p>
+              <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 15 %>
+                <p style="color:yellow; font-weight:bold;"><%= task.deadline%></p>
+              <% else %>
+                <p style="color:green; font-weight:bold;"><%= task.deadline%></p>
+              <% end %>
+              <p><%= task.priority_order%></p>
+              <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
+              </p>
+            </div>
+          </div>
+        <%elsif type_of_card == 2%>
+          <div class="card 2">
+            <div class="card_image">
+              <img src="https://images.unsplash.com/photo-1526655805340-274e69922288?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
+            </div>
+            <div class="card_title">
+              <p><%= task.title%></p>
+              <%if (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 0 %>
+                <p> Too late, the deadline was the <%= task.deadline%></p></p>
+              <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) == 0 %>
+                <p> Vite la deadline est aujourd'hui !!!</p>
+              <%elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 3%>
+                <p style="color:red; font-weight:bold;"><%= task.deadline%></p>
+              <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 7 %>
+                <p style="color:orange; font-weight:bold;"><%= task.deadline%></p>
+              <% elsif (task.deadline.to_time.to_i/86400)-(Date.today.to_time.to_i/86400) < 15 %>
+                <p style="color:yellow; font-weight:bold;"><%= task.deadline%></p>
+              <% else %>
+                <p style="color:green; font-weight:bold;"><%= task.deadline%></p>
+              <% end %>
+              <p><%= task.priority_order%></p>
+              <p><%= link_to '☺♪☺ voir cette tache ☺♪☺', task_comments_path(task), class:"btn-gradient", style:"text-decoration:none;" %>
+              </p>
+            </div>
+          </div>
         <% else%>
         <% end%>
-    <% end%>
+    <%else%>
+    <%end%>
+  <%end%> 
 </div>
-
 
