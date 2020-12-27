@@ -1,4 +1,4 @@
-<h1>page de creation d'une nouvelle task</h1>
+<h4>nouvelle task</h4>
 
 <%= simple_form_for @task do |f| %>
     <%= f.input :title, label: "titre de la tâche"%>
@@ -6,4 +6,5 @@
     <%= f.input :status, label: "status" %>
     <%= f.input :priority_order, collection: Task::PRIORITY  %>
     <%= f.button :submit, class: "button-user" %>
+
 <%end%>

@@ -24,13 +24,13 @@ class CommentsController < ApplicationController
 
     def show
         @comment = Comment.find(params[:id])
-        #authorize @comment
+        authorize @comment
     end
 
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy
-        #authorize @comment
+        authorize @comment
         redirect_to tasks_path
     end
 
