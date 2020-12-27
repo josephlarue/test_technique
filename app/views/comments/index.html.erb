@@ -13,7 +13,7 @@
     <div style="border-top:solid 0.2px; margin-top: 15px;">
     <%= comment.content%>
     <%= button_to "Supprimer le commentaire", {:controller => :comments,
-      :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn-ghost", style:"margin-top:15px;" %>
+      :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn-flat-red", style:"margin-top:15px;" %>
     </div>
     
 <%else%>
