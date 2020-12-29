@@ -1,6 +1,6 @@
-
-<a class="btn btn-flat" href="/tasks/new" style="display: flex;justify-content: center; align-items: center; margin:50px;">☺♪☺ Nouvelle tache ☺♪☺ </a>
-
+<div style="display: flex; align-items: center; justify-content: center; margin:15px;">
+  <a class="btn btn-flat" href="/tasks/new">☺♪☺ Nouvelle tache ☺♪☺ </a>
+</div>
 <div class="cards">
   <%@tasks.each do |task|%>
     <% if task.user.id == current_user.id%>

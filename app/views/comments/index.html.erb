@@ -1,24 +1,45 @@
 
+<% x = rand(1..2)%>
+<% if x == 1 %>
+<div class="card-comment">
+  <img src="https://media3.giphy.com/media/lJnAXeJO8tE7E37mxq/giphy.gif?cid=ecf05e47nuwo1mcgckateax2iicgax9ndng7wifle1cge8ex&rid=giphy.gif" />
+  <div class="card-comment-infos">
+    <h2><%= @task.title %></h2>
+    <p><%= @task.deadline %></p>
+    <p><%= @task.priority_order %></p>
+  </div>
+</div>
+<% elsif x == 2 %>
+<div class="card-comment">
+  <img src="https://media3.giphy.com/media/vhsNmFjuN4WDS/giphy.gif?cid=ecf05e47nuwo1mcgckateax2iicgax9ndng7wifle1cge8ex&rid=giphy.gif" />
+  <div class="card-comment-infos">
+    <h2><%= @task.title %></h2>
+    <p><%= @task.deadline %></p>
+    <p><%= @task.priority_order %></p>
+  </div>
+</div>
+<% end %>
 
-<div style="margin:15px;">
-<div style="border:solid; margin:25px; padding:35px;">
-      <p><%= @task.title %></p>
-      <p><%= @task.deadline %></p>
-      <p><%= @task.priority_order %></p>
-<h4>commentaires: </h4>
+
+<h4 style="text-align:center;">commentaires: </h4>
 <% @comments.each do |comment|%>
-
 <%if @task.id == comment.task.id%>
-   
-    <div style="border-top:solid 0.2px; margin-top: 15px;">
-    <%= comment.content%>
-    <%= button_to "Supprimer le commentaire", {:controller => :comments,
-      :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn-flat-red", style:"margin-top:15px;" %>
-    </div>
+<div class="comment">
+  <img src='https://media3.giphy.com/media/PvvSfSDFoAL5e/giphy.gif?cid=ecf05e47d1e0494ea11bd16a50ce5608ea36fcc8ae2f0caf&rid=giphy.gif' class="avatar-large" />
+  <div class="comment-content">
+    <p><%= comment.content %></p>
+  </div>
+  <div class="comment-actions">
+  <%= button_to "Delete", {:controller => :comments, :action => 'destroy', :id => comment.id }, :method => :delete, class:"btn-flat-red" %>
+  </div>
+</div>
+
     
 <%else%>
 <%end%>
 <% end %>
 </div>
 <a class="btn btn-flat" href="./comments/new" style="display: flex;justify-content: center; align-items: center;">☺♪☺ Nouveau commentaire ☺♪☺ </a>
-</div>
+
+
+

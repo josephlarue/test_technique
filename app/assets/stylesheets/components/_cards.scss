@@ -4,7 +4,40 @@
   grid-gap: 16px;
 }
 
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
 
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 
 .card {
   margin: 30px auto;
@@ -44,3 +77,81 @@
     -5px -5px 30px 15px rgba(0,0,0,0.22);
 }
 
+
+
+.card-comment {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  margin: 25px;
+  align-items: center;
+}
+
+.card-comment img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-comment h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-comment p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-comment .card-comment-infos {
+  padding: 16px;
+}
+
+
+
+.card-task {
+  margin:50px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-task > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-task h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-task p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-task .card-task-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-task-infos .card-task-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
