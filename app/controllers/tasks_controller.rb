@@ -30,6 +30,10 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
+    @comments = Comment.where(task_id: @task.id)
+    @comments.each do |comment|
+      comment.destroy
+    end
     @task.destroy
     authorize @task
     redirect_to tasks_path
