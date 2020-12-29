@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     authorize @comment
-    redirect_to tasks_path
+    redirect_to task_comments_path
   end
 
   private
