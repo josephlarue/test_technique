@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :tasks
 
   validates :email, uniqueness: true
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, format: { with: /\A.*@.*\.(en|edu|de|fr|com)\z/ }
 end
