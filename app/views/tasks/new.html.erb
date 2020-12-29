@@ -1,16 +1,14 @@
-<div style="padding-top:80px;">
+<span style="padding-top:50px;"></span>
 <div class="col-8 mx-auto", style="padding: 50px; margin: 50px; border-radius:8%;">
-<div style="text-align:center;">
-<h4>nouvelle task</h4>
-<%= simple_form_for @task do |f| %>
+  <div style="text-align:center;">
+    <h4>nouvelle task</h4>
+    <%= simple_form_for @task do |f| %>
     <%= f.input :title, label: "titre de la tâche"%>
     <%= f.input :deadline, label: "deadline" %>
     <%= f.input :status, label: "déjà effectuée ?" %>
     <%= f.input :priority_order, collection: Task::PRIORITY  %>
     <%= f.button :submit, class: "button-user" %>
-<%end%>
-
-    </div>
+    <%end%>
+  </div>
 </div>
 
-</div>

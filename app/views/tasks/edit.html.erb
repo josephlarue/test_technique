@@ -1,18 +1,18 @@
-<div style="padding-bottom:50px;">
+<span style="padding-bottom:50px;"></span>
 
-<div class="col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:8%;">
-<h2 style="margin:25px;"><strong>Modification de: <%= @task.title %></strong></h2>
-  <div style="text-align:center;">
- <%= simple_form_for @task, url: task_path(@task), method: :put do |f| %>
+  <div class="col-6 mx-auto", style="padding: 10px; margin-top: 50px; border-radius:8%;">
+    <h2 style="margin:25px;"><strong>Modification de: <%= @task.title %></strong></h2>
+    <div style="text-align:center;">
+      <%= simple_form_for @task, url: task_path(@task), method: :put do |f| %>
 
-    <%= f.error_notification %>
-    <div class="form-inputs">
-      <%= f.input :title  %>
-      <%= f.input :deadline %>
-      <%= f.input :status, label:"Done?" %>
-      <%= f.input :priority_order %>
-      <%= f.button :submit, class:"btn btn-outline-primary" %>
-  <% end %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :title  %>
+        <%= f.input :deadline %>
+        <%= f.input :status, label:"Done?" %>
+        <%= f.input :priority_order %>
+        <%= f.button :submit, class:"btn btn-outline-primary" %>
+        <% end %>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
